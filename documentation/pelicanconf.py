@@ -51,8 +51,8 @@ DEFAULT_PAGINATION = False
 # Defaults
 DEFAULT_CATEGORY = "Miscellaneous"
 USE_FOLDER_AS_CATEGORY = False
-ARTICLE_URL = "{slug}"
-PAGE_URL = "{slug}"
+ARTICLE_URL = "{slug}.html"
+PAGE_URL = "{slug}.html"
 PAGE_SAVE_AS = "{slug}.html"
 TAGS_URL = "tags"
 CATEGORIES_URL = "categories"

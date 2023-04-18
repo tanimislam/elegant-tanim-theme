@@ -10,6 +10,7 @@
         {% else %}
         <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/elegant.prod.9e9d5ce754.css" media="screen">
         <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/custom.css" media="screen">
+	<link rel="stylesheet" href="https://files.stork-search.net/basic.css" />
         {% endif %}
         {% endblock head_links %}
         <link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -82,7 +83,8 @@
                                 <li {% if page_name == 'categories' %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ CATEGORIES_URL }}">Categories</a></li>
                                 <li {% if page_name == 'tags' %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ TAGS_URL }}">Tags</a></li>
                                 <li {% if page_name == 'archives' %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ ARCHIVES_URL }}">Archives</a></li>
-                                <li><form class="navbar-search" action="{{ SITEURL }}/{{ SEARCH_URL }}" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                                <!-- <li><form class="navbar-search" action="{{ SITEURL }}/{{ SEARCH_URL }}" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li> -->
+				<li><input data-stork="sitesearch" type="text" class="search-query" placeholder="Search" name="q" /><div data-stork="sitesearch-output"></div></li>
                             </ul>
                         </div>
                     </div>
@@ -113,6 +115,11 @@
                 return (query.length > 0);
             }
         </script>
+	<!-- the stork stuff I got from https://github.com/pelican-plugins/search -->
+	<script src="https://files.stork-search.net/releases/v1.6.0/stork.js"></script>
+	<script>
+	    stork.register("sitesearch", "{{ SITEURL }}/search-index.st");
+	</script>
         {% endblock script %}
         {% include '_includes/stat_counter.html' %}
     </body>
